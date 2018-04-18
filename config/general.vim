@@ -94,6 +94,9 @@ nmap <leader>fed ggVG=
 imap jj <Esc>
 inoremap <C-c> <Esc>
 
+nnoremap <Leader>rr :set relativenumber<CR>
+nnoremap <Leader>rn :set norelativenumber<CR>
+
 command! -nargs=* AC execute 'silent !carlitos ac <args>' | execute 'redraw!'
 
 map <leader>ACo :AC<cr>

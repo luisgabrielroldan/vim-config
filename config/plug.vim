@@ -11,7 +11,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'wesQ3/vim-windowswap'
-
+Plug 'mhinz/vim-mix-format'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'chriskempson/vim-tomorrow-theme'
+Plug 'amadeus/vim-mjml'
 
 call plug#end()

@@ -7,6 +7,8 @@
 
 map <C-n><C-t> :NERDTreeToggle<cr>
 
+let g:NERDTreeCascadeSingleChildDir = 0
+
 " =================================================
 " CtrlP
 " =================================================
@@ -84,8 +86,11 @@ command! -bang Colors
   \ call fzf#vim#colors({'left': '15%', 'options': '--reverse --margin 30%,0'}, <bang>0)
 
 
+" =================================================
+" vim-mix-format
+" =================================================
 
-
+let g:mix_format_elixir_bin_path = '~/.asdf/installs/elixir/1.6.0/bin'
 
 
 
