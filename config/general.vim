@@ -16,6 +16,8 @@ set noswapfile
 " =================================================
 set history=500
 
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline
+
 " Set autoread when file is changed from the outside
 set autoread
 
@@ -47,6 +49,8 @@ set wildignore+=_build/*,*.beam
 set timeoutlen=1000
 set ttimeoutlen=0
 set modeline
+" set clipboard=unnamed
+set clipboard=unnamedplus
 " =================================================
 " Colors and Theme
 " =================================================
@@ -89,10 +93,12 @@ nnoremap <Right> :vertical resize -1<cr>
 nnoremap <Up> :resize +1<cr>
 nnoremap <Down> :resize -1<cr>
 
-nmap <leader>fed ggVG=
+nmap <leader>fed G=gg
 
 imap jj <Esc>
 inoremap <C-c> <Esc>
+
+nnoremap Q <nop>
 
 nnoremap <Leader>rr :set relativenumber<CR>
 nnoremap <Leader>rn :set norelativenumber<CR>
@@ -103,3 +109,6 @@ map <leader>ACo :AC<cr>
 map <leader>ACc :AC -m cool -t 25<cr>
 map <leader>ACh :AC -m heat -t 28<cr>
 map <leader>ACf :AC -m fan -f 3<cr>
+
+
+

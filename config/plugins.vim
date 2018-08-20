@@ -6,30 +6,16 @@
 " autocmd vimenter * if !argc() | NERDTree | endif
 
 map <C-n><C-t> :NERDTreeToggle<cr>
-
+"
 let g:NERDTreeCascadeSingleChildDir = 0
+" let NERDTreeDirArrowExpandable = " "
+" let NERDTreeDirArrowCollapsible = " "
 
-" =================================================
-" CtrlP
-" =================================================
-
-" map <leader>pb :CtrlPBuffer<cr>
-" map <leader>pm :CtrlPMixed<cr>
-" map <leader>pc :CtrlPClearCache<cr>
-"
-" let g:ctrlp_custom_ignore = 'bower_components\|node_modules\|git|'
-" let g:ctrlp_match_window_bottom = 0 " Show at top of window
-" let g:ctrlp_working_path_mode = 2 " Smart path mode
-" let g:ctrlp_mru_files = 1 " Enable Most Recently Used files feature
-" let g:ctrlp_jump_to_buffer = 2 " Jump to tab AND buffer if already open
-" let g:ctrlp_split_window = 1 " <CR> = New Tab
-"
 
 " =================================================
 " vim-test
 " =================================================
 nmap <silent> <leader>Tf :TestFile<CR>
-nmap <silent> <leader>Ts :TestSuite<CR>
 nmap <silent> <leader>Tn :TestNearest<CR>
 nmap <silent> <leader>Tl :TestLast<CR>
 
@@ -90,7 +76,44 @@ command! -bang Colors
 " vim-mix-format
 " =================================================
 
-let g:mix_format_elixir_bin_path = '~/.asdf/installs/elixir/1.6.0/bin'
+" let g:mix_format_elixir_bin_path = '~/.asdf/installs/elixir/1.6.0/bin'
+let g:mix_format_options = '--check-equivalent'
+let g:mix_format_silent_errors = 1
+
+nnoremap <silent> <Leader>mf :MixFormat<CR>
+
+" =================================================
+" Syntastic
+" =================================================
+
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+
+let g:syntastic_mode_map = { 'mode': 'passive' }
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+" Enable the elixir checker
+let g:syntastic_elixir_checkers = ['elixir']
+let g:syntastic_enable_elixir_checker = 1
+
+" Enable the eslint checker
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_javascript_eslint_generic = 1
+let g:syntastic_javascript_eslint_exec = '/bin/ls'
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint'
+let g:syntastic_javascript_eslint_args='-f compact'
 
 
 
+nnoremap <silent> <Leader>sc :SyntasticCheck<CR>
+
+let g:windowswap_map_keys = 0
+
+nnoremap <silent> <leader>WW :call WindowSwap#EasyWindowSwap()<CR>
+
+" =================================================
+" Syntastic
+" =================================================
+"
+let g:calendar_google_calendar = 1

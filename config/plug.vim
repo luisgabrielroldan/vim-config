@@ -15,5 +15,12 @@ Plug 'mhinz/vim-mix-format'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'chriskempson/vim-tomorrow-theme'
 Plug 'amadeus/vim-mjml'
+Plug 'stephpy/vim-yaml'
+Plug 'vim-syntastic/syntastic'
+" Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'vimwiki/vimwiki'
+Plug 'git@github.com:itchyny/calendar.vim.git'
 
 call plug#end()
