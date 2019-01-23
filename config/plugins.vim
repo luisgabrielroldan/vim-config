@@ -113,7 +113,7 @@ let g:windowswap_map_keys = 0
 nnoremap <silent> <leader>WW :call WindowSwap#EasyWindowSwap()<CR>
 
 " =================================================
-" Syntastic
+" Yggdroot/indentLine
 " =================================================
-"
-let g:calendar_google_calendar = 1
+
+" autocmd Filetype json let g:indentLine_enabled = 0

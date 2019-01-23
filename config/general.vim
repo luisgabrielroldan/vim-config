@@ -55,7 +55,9 @@ set clipboard=unnamedplus
 " Colors and Theme
 " =================================================
 set background=dark
-colorscheme badwolf
+colorscheme PaperColor
+" colorscheme gruvbox
+" let g:gruvbox_contrast_dark='hard'
 
 " =================================================
 " Text, tab and indent related
@@ -71,7 +73,6 @@ set tabstop=2
 
 set list
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
-
 
 " =================================================
 " Movement, windows, tabs, etc

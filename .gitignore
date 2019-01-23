@@ -1,4 +1,5 @@
 bundle
 !bundle/Vundle.vim
 plugged/*
+sessions/*
 !git.keep
