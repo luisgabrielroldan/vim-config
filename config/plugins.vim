@@ -5,7 +5,8 @@
 
 " autocmd vimenter * if !argc() | NERDTree | endif
 
-map <C-n><C-t> :NERDTreeToggle<cr>
+map <silent><leader>nt :NERDTreeToggle<cr>
+map <silent><leader>nn :NERDTreeFind<cr>
 "
 let g:NERDTreeCascadeSingleChildDir = 0
 " let NERDTreeDirArrowExpandable = " "
@@ -15,10 +16,11 @@ let g:NERDTreeCascadeSingleChildDir = 0
 " =================================================
 " vim-test
 " =================================================
+" let test#strategy = "vimterminal"
+
 nmap <silent> <leader>Tf :TestFile<CR>
 nmap <silent> <leader>Tn :TestNearest<CR>
 nmap <silent> <leader>Tl :TestLast<CR>
-
 
 " =================================================
 " FZF
@@ -38,11 +40,13 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 nnoremap <silent> <Leader>fw :Windows<CR>
 nnoremap <silent> <Leader>bb :Buffers<CR>
 
+nnoremap <silent> <Leader>ag :Ag<CR>
 nnoremap <silent> <Leader>fp :Frg<CR>
 nnoremap <silent> <Leader>ff :Frga<CR>
 nnoremap <silent> <Leader>flu :Locate ~<CR>
 nnoremap <silent> <Leader>flr :Locate /<CR>
 nnoremap <silent> <Leader>fh :History<CR>
+nnoremap <silent> <Leader>fT :Tags<CR>
 
 nnoremap <silent> <Leader>gl :Commits<CR>
 nnoremap <silent> <Leader>gb :BCommits<CR>
@@ -56,12 +60,18 @@ nnoremap <silent> <Leader>h :Helptags<CR>
 nnoremap <silent> <Leader>ll :Lines<CR>
 nnoremap <silent> <Leader>lb :BLines<CR>
 
+
 command -bang Frg
   \ call fzf#vim#files(<q-args>, {'source': 'rg --files -g ""'}, <bang>0)
 
 command -bang Frga
   \ call fzf#vim#files(<q-args>, {'source': 'rg --files --hidden -g "!.git/*"'}, <bang>0)
 
+command -bang -nargs=* Rg
+  \ call fzf#vim#grep('rg --colors "match:bg:yellow" --colors "match:fg:black" --colors "match:style:nobold" --colors "path:fg:green" --colors "path:style:bold" --colors "line:fg:yellow" --colors "line:style:bold" --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 0, <bang>0)
+
+command -bang -nargs=* Rga
+  \ call fzf#vim#grep('rg --colors "match:bg:yellow" --colors "match:fg:black" --colors "match:style:nobold" --colors "path:fg:green" --colors "path:style:bold" --colors "line:fg:yellow" --colors "line:style:bold" --hidden --column --line-number --no-heading --color=always --smart-case -g "!.git/*" '.shellescape(<q-args>), 0, <bang>0)
 command -bang -nargs=* GGrep
   \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
 
@@ -107,6 +117,7 @@ let g:syntastic_javascript_eslint_args='-f compact'
 
 
 nnoremap <silent> <Leader>sc :SyntasticCheck<CR>
+nnoremap <silent> <Leader>sr :SyntasticCheck<CR>
 
 let g:windowswap_map_keys = 0
 
@@ -117,3 +128,31 @@ nnoremap <silent> <leader>WW :call WindowSwap#EasyWindowSwap()<CR>
 " =================================================
 
 " autocmd Filetype json let g:indentLine_enabled = 0
+
+function! ElixirUmbrellaTransform(cmd) abort
+  if match(a:cmd, 'apps/') != -1
+    return substitute(a:cmd, 'mix test apps/\([^/]*\)/', 'mix cmd --app \1 mix test --color ', '')
+  else
+    return a:cmd
+  end
+endfunction
+
+let g:test#custom_transformations = {'elixir_umbrella': function('ElixirUmbrellaTransform')}
+let g:test#transformation = 'elixir_umbrella'
+
+let g:calendar_google_calendar = 1
+nmap <leader>Cd :Calendar -view=day<CR>
+nmap <leader>Cm :Calendar -view=month<CR>
+nmap <leader>Cw :Calendar -view=week<CR>
+nmap <leader>Cy :Calendar -view=year<CR>
+nmap <leader>Cc :Calendar -view=clock<CR>
+
+" Vim Wiki
+
+let g:vimwiki_list = [{'path': '~/vimwiki/', 'auto_generate_links': 1, 'auto_toc': 1, 'auto_diary_index': 1}]
+
+autocmd FileType vimwiki  nmap <leader>ws :VimwikiSearch<Space>
+autocmd FileType vimwiki  nmap <leader>lo :lopen<CR>
+autocmd FileType vimwiki  nmap <leader>lc :lclose<CR>
+autocmd FileType vimwiki  nmap <leader>ln :lnext<CR>
+autocmd FileType vimwiki  nmap <leader>lp :lprevious<CR>

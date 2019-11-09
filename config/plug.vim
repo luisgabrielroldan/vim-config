@@ -27,12 +27,12 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'tomasr/molokai'
 
-
+Plug 'slashmili/alchemist.vim'
 
 
 " Plug 'Yggdroot/indentLine'
 " Plug 'pangloss/vim-javascript'
-" Plug 'git@github.com:itchyny/calendar.vim.git'
+Plug 'git@github.com:itchyny/calendar.vim.git'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 
 call plug#end()

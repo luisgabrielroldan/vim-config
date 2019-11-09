@@ -26,6 +26,18 @@ command W w !sudo tee % > /dev/null
 
 set showcmd       " Shows incomplete command
 set wildmenu      " Set command-line completion
+" Where Vim looks for completions is controlled by the complete setting.
+" The default is .,w,b,u,t,i, which means Vim will look in:
+" 
+" . The current buffer.
+" w Buffers in other windows.
+" b Other loaded buffers.
+" u Unloaded buffers.
+" t Tags.
+" i Included files.
+
+set complete=.,w,b,u,i
+
 
 set cursorline    " Highlight current line
 set laststatus=2  " Always show statusline
@@ -104,12 +116,9 @@ nnoremap Q <nop>
 nnoremap <Leader>rr :set relativenumber<CR>
 nnoremap <Leader>rn :set norelativenumber<CR>
 
-command! -nargs=* AC execute 'silent !carlitos ac <args>' | execute 'redraw!'
-
-map <leader>ACo :AC<cr>
-map <leader>ACc :AC -m cool -t 25<cr>
-map <leader>ACh :AC -m heat -t 28<cr>
-map <leader>ACf :AC -m fan -f 3<cr>
-
-
-
+cnoremap <C-k> <Up>
+cnoremap <C-j> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-b> <S-Left>
+cnoremap <C-w> <S-Right>
