@@ -21,7 +21,13 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vimwiki/vimwiki'
 Plug 'nelsyeung/twig.vim'
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 Plug 'morhetz/gruvbox'
+Plug 'majutsushi/tagbar'
 
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'NLKNguyen/papercolor-theme'
@@ -29,6 +35,14 @@ Plug 'tomasr/molokai'
 
 Plug 'slashmili/alchemist.vim'
 
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+Plug 'ryanoasis/vim-devicons'
+
+" Themes
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 " Plug 'Yggdroot/indentLine'
 " Plug 'pangloss/vim-javascript'

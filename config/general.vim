@@ -24,6 +24,8 @@ set autoread
 " :W sudo save
 command W w !sudo tee % > /dev/null
 
+set path+=**
+
 set showcmd       " Shows incomplete command
 set wildmenu      " Set command-line completion
 " Where Vim looks for completions is controlled by the complete setting.
@@ -66,8 +68,12 @@ set clipboard=unnamedplus
 " =================================================
 " Colors and Theme
 " =================================================
+set termguicolors
+
 set background=dark
-colorscheme PaperColor
+"colorscheme PaperColor
+colorscheme onehalfdark
+
 " colorscheme gruvbox
 " let g:gruvbox_contrast_dark='hard'
 

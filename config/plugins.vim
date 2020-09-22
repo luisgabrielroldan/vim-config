@@ -12,7 +12,6 @@ let g:NERDTreeCascadeSingleChildDir = 0
 " let NERDTreeDirArrowExpandable = " "
 " let NERDTreeDirArrowCollapsible = " "
 
-
 " =================================================
 " vim-test
 " =================================================
@@ -91,6 +90,7 @@ let g:mix_format_options = '--check-equivalent'
 let g:mix_format_silent_errors = 1
 
 nnoremap <silent> <Leader>mf :MixFormat<CR>
+nnoremap <silent> <Leader>mc :Mix compile<CR>
 
 " =================================================
 " Syntastic
@@ -156,3 +156,72 @@ autocmd FileType vimwiki  nmap <leader>lo :lopen<CR>
 autocmd FileType vimwiki  nmap <leader>lc :lclose<CR>
 autocmd FileType vimwiki  nmap <leader>ln :lnext<CR>
 autocmd FileType vimwiki  nmap <leader>lp :lprevious<CR>
+
+
+" =================================================
+" Snippets
+" =================================================
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
+" =================================================
+" CTags
+" =================================================
+
+let g:tagbar_use_cache = 0
+
+let g:tagbar_type_elixir = {
+    \ 'ctagstype' : 'elixir',
+    \ 'kinds' : [
+        \ 'p:protocols',
+        \ 'm:modules',
+        \ 'e:exceptions',
+        \ 'y:types',
+        \ 'd:delegates',
+        \ 'f:functions',
+        \ 'c:callbacks',
+        \ 'a:macros',
+        \ 't:tests',
+        \ 'i:implementations',
+        \ 'o:operators',
+        \ 'r:records'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 'p' : 'protocol',
+        \ 'm' : 'module'
+    \ },
+    \ 'scope2kind' : {
+        \ 'protocol' : 'p',
+        \ 'module' : 'm'
+    \ },
+    \ 'sort' : 0
+\ }
+
+set tags=./tags;$HOME
+
+nmap <F8> :TagbarToggle<CR>
+
+" Customs
+
+nnoremap <silent> <Leader>cf :!cargo fmt<CR>
+
+" =================================================
+" LanguageClient
+" =================================================
+
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['/usr/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nmap <F5> <Plug>(lcn-menu)
+
